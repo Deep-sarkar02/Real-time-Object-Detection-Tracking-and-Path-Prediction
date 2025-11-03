@@ -1,0 +1,137 @@
+/* web/styles.css */
+/* Professional styling for the real-time detection/tracking frontend. Comments explain each rule. */
+
+:root { /* Define CSS variables for consistent theming */
+  --bg: #0f172a; /* Dark navy background color */
+  --card: #111827; /* Slightly lighter card background */
+  --text: #e5e7eb; /* Light text color for contrast */
+  --muted: #9ca3af; /* Muted gray for secondary text */
+  --primary: #3b82f6; /* Blue accent color for primary actions */
+  --secondary: #4b5563; /* Gray color for secondary actions */
+  --border: #1f2937; /* Border color for separators */
+  --success: #10b981; /* Green for success highlights */
+  --danger: #ef4444; /* Red for error highlights */
+}
+
+* { box-sizing: border-box; } /* Include padding/border in element width calculations */
+
+html, body { /* Base styles for entire page */
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+  background: var(--bg); /* Set the page background color */
+  color: var(--text); /* Set default text color */
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* Professional font stack */
+}
+
+.app-header { /* Header bar styling */
+  padding: 24px; /* Space inside the header */
+  border-bottom: 1px solid var(--border); /* Subtle bottom border */
+  background: linear-gradient(180deg, #0b1220, #0f172a); /* Gradient background */
+}
+
+.app-header h1 { /* Main title styling */
+  margin: 0; /* Remove default margin */
+  font-size: 24px; /* Set font size */
+  font-weight: 700; /* Make it bold */
+}
+
+.subtitle { /* Subtitle text */
+  margin: 4px 0 0; /* Top margin only */
+  color: var(--muted); /* Use the muted color */
+  font-size: 14px; /* Smaller font size */
+}
+
+.container { /* Main content container */
+  max-width: 1120px; /* Limit page width for readability */
+  margin: 24px auto; /* Center horizontally with top/bottom margin */
+  padding: 0 16px; /* Horizontal padding */
+}
+
+.card { /* Card component base style */
+  background: var(--card); /* Card background color */
+  border: 1px solid var(--border); /* Subtle border around card */
+  border-radius: 12px; /* Rounded corners */
+  padding: 16px; /* Internal padding */
+  margin-bottom: 24px; /* Spacing between cards */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+.controls h2, .viewer h2 { /* Section headings */
+  margin-top: 0; /* Remove top margin */
+  font-size: 18px; /* Font size for section titles */
+}
+
+.grid { /* Grid layout for form controls */
+  display: grid; /* Enable CSS grid */
+  grid-template-columns: repeat(4, 1fr); /* Four columns */
+  gap: 12px; /* Spacing between grid items */
+}
+
+.form-group { /* Wrapper for label+input */
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Stack label above input */
+}
+
+.form-group label { /* Label styling */
+  font-size: 12px; /* Small label text */
+  color: var(--muted); /* Muted color */
+  margin-bottom: 8px; /* Space below label */
+}
+
+.form-group input, .form-group select { /* Inputs and selects styling */
+  background: #0b1220; /* Dark input background */
+  color: var(--text); /* Light text color */
+  border: 1px solid var(--border); /* Border for inputs */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Spacing inside inputs */
+  outline: none; /* Remove default outline */
+}
+
+.hidden { display: none; } /* Utility class to hide elements */
+
+.actions { /* Container for Start/Stop buttons */
+  margin-top: 12px; /* Space above buttons */
+  display: flex; /* Arrange buttons horizontally */
+  gap: 8px; /* Spacing between buttons */
+}
+
+button { /* Base styling for all buttons */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px 16px; /* Internal padding */
+  cursor: pointer; /* Show pointer on hover */
+  font-weight: 600; /* Semi-bold text */
+}
+
+button.primary { /* Primary action button */
+  background: var(--primary); /* Use primary color */
+  color: white; /* White text */
+}
+
+button.secondary { /* Secondary action button */
+  background: var(--secondary); /* Use secondary color */
+  color: white; /* White text */
+}
+
+.video-wrapper { /* Container around the video element */
+  border: 1px solid var(--border); /* Border around video area */
+  border-radius: 12px; /* Rounded corners */
+  padding: 8px; /* Padding inside the border */
+  display: flex; /* Center the image inside */
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  min-height: 360px; /* Minimum height to avoid collapsing */
+  background: #0b1220; /* Dark background to match theme */
+}
+
+#stream { /* Styling for the streamed image */
+  max-width: 100%; /* Constrain image to container width */
+  border-radius: 8px; /* Rounded corners on the image */
+}
+
+.app-footer { /* Footer styling */
+  text-align: center; /* Center the text */
+  color: var(--muted); /* Use muted color */
+  padding: 16px; /* Spacing inside footer */
+  border-top: 1px solid var(--border); /* Top border to separate from content */
+}

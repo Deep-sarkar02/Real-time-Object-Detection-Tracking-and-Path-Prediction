@@ -1,0 +1,92 @@
+<!-- web/index.html -->
+<!-- A professional frontend for controlling and viewing real-time object detection, tracking, and path prediction.
+     Every line is commented to help novices understand. -->
+<!DOCTYPE html> <!-- Declare the HTML5 document type -->
+<html lang="en"> <!-- Begin the HTML document with English language -->
+<head> <!-- Head section containing metadata and links -->
+  <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 for broad compatibility -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page responsive on mobile -->
+  <title>Real-time Detection, Tracking and Path Prediction</title> <!-- Browser tab title -->
+  <link rel="stylesheet" href="/static/styles.css"> <!-- Link to the external stylesheet served by FastAPI -->
+</head> <!-- End of head section -->
+<body> <!-- Body section containing the visible content -->
+  <header class="app-header"> <!-- Top header bar of the application -->
+    <h1>Real-time Object Detection, Tracking, and Path Prediction</h1> <!-- Main heading of the page -->
+    <p class="subtitle">Professional interface for live analysis from webcam or external camera</p> <!-- Brief subtitle -->
+  </header> <!-- End header -->
+
+  <main class="container"> <!-- Main content container with a fixed max width -->
+    <section class="controls card"> <!-- A card section for user controls -->
+      <h2>Source and Settings</h2> <!-- Section heading -->
+      <div class="grid"> <!-- A grid layout for form inputs -->
+        <div class="form-group"> <!-- Group for a single form control -->
+          <label for="source">Source</label> <!-- Label for the source select box -->
+          <select id="source"> <!-- Dropdown to choose input source -->
+            <option value="webcam" selected>Webcam</option> <!-- Default option: local webcam -->
+            <option value="url">External Camera (RTSP/HTTP/USB)</option> <!-- Alternative option: external URL -->
+          </select> <!-- End select -->
+        </div> <!-- End form group -->
+
+        <div class="form-group" id="webcam-group"> <!-- Group for webcam index input -->
+          <label for="webcamIndex">Webcam Index</label> <!-- Label for webcam index -->
+          <input id="webcamIndex" type="number" value="0" min="0"> <!-- Numeric input: which webcam to use -->
+        </div> <!-- End form group -->
+
+        <div class="form-group hidden" id="url-group"> <!-- Group for external camera URL input, hidden initially -->
+          <label for="cameraUrl">Camera URL/Path</label> <!-- Label for camera URL -->
+          <input id="cameraUrl" type="text" placeholder="rtsp://user:pass@ip:port/stream or device path"> <!-- Text input for URL -->
+        </div> <!-- End form group -->
+
+        <div class="form-group"> <!-- Group for model selection -->
+          <label for="modelName">Model</label> <!-- Label for model select -->
+          <select id="modelName"> <!-- Dropdown for choosing YOLO model -->
+            <option value="yolov8n.pt" selected>YOLOv8n (fastest)</option> <!-- Small, fast model -->
+            <option value="yolov8s.pt">YOLOv8s (balanced)</option> <!-- Slightly larger, more accurate -->
+          </select> <!-- End select -->
+        </div> <!-- End form group -->
+
+        <div class="form-group"> <!-- Group for image size -->
+          <label for="imgSize">Image Size</label> <!-- Label for img size input -->
+          <input id="imgSize" type="number" value="640" min="256" step="32"> <!-- Input for detector resolution -->
+        </div> <!-- End form group -->
+
+        <div class="form-group"> <!-- Group for confidence threshold -->
+          <label for="confThres">Confidence Threshold</label> <!-- Label for conf threshold -->
+          <input id="confThres" type="number" value="0.3" min="0" max="1" step="0.05"> <!-- Input for conf -->
+        </div> <!-- End form group -->
+
+        <div class="form-group"> <!-- Group for IoU matching threshold -->
+          <label for="iouMatch">IoU Match Threshold</label> <!-- Label for IoU threshold -->
+          <input id="iouMatch" type="number" value="0.3" min="0" max="1" step="0.05"> <!-- Input for IoU -->
+        </div> <!-- End form group -->
+
+        <div class="form-group"> <!-- Group for prediction horizon -->
+          <label for="predHorizon">Prediction Horizon (sec)</label> <!-- Label for horizon -->
+          <input id="predHorizon" type="number" value="0.7" min="0.1" step="0.1"> <!-- Input for horizon seconds -->
+        </div> <!-- End form group -->
+
+      </div> <!-- End grid layout -->
+      <div class="actions"> <!-- Container for action buttons -->
+        <button id="startBtn" class="primary">Start</button> <!-- Button to start processing -->
+        <button id="stopBtn" class="secondary">Stop</button> <!-- Button to stop processing -->
+      </div> <!-- End actions -->
+    </section> <!-- End controls card -->
+
+    <section class="viewer card"> <!-- Card section to display the video stream -->
+      <h2>Live Stream</h2> <!-- Section heading -->
+      <div class="video-wrapper"> <!-- Wrapper to hold the video element and border -->
+        <img id="stream" alt="Live stream will appear here" src="" /> <!-- IMG tag will display MJPEG stream -->
+      </div> <!-- End wrapper -->
+      <div class="info"> <!-- Information footer under the video -->
+        <span id="statusText">Status: Idle</span> <!-- Text to show current status -->
+      </div> <!-- End info -->
+    </section> <!-- End viewer card -->
+  </main> <!-- End main container -->
+
+  <footer class="app-footer"> <!-- Footer section with small print -->
+    <p>© 2025 Real-time Analytics Suite. All rights reserved.</p> <!-- Copyright notice -->
+  </footer> <!-- End footer -->
+
+  <script src="/static/app.js"></script> <!-- Include the frontend JavaScript logic -->
+</body> <!-- End body -->
+</html> <!-- End HTML document -->
