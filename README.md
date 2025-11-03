@@ -2,6 +2,15 @@
 
 A professional, real-time system that detects objects, tracks their movement, and predicts short-term future paths. It provides a modern web frontend to control the source (webcam or external camera) and visualize live annotated video.
 
+## Output Example
+
+
+<video width="640" height="360" controls>
+  <source src="ObjectTrackingOutput2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 ## Features
 
 - High-FPS detection using YOLO (Ultralytics) for real-time performance.
